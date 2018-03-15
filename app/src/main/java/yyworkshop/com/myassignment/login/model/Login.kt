@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlin.collections.HashMap
 
 /**
- * Title: yyworkshop.com.myassignment.login.model.Login<br></br>
+ * Title: yyworkshop.com.myassignment.login.model.Login<br>
  * Description: Login
  *
  * @author chris
@@ -14,7 +14,7 @@ import kotlin.collections.HashMap
 data class Login(
         @SerializedName("objectId") val objectId: String,
         @SerializedName("username") val username: String,
-        @SerializedName("timezone") val timezone: Long,
+        @SerializedName("timezone") val timezone: Int,
         @SerializedName("email") val email: String,
         @SerializedName("code") val code: String,
         @SerializedName("createdAt") val createdAt: String,

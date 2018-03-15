@@ -124,6 +124,8 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
                     override fun onResponse(data: Login) {
                         val login = data
                         AppContext.setToken(login.sessionToken)
+                        AppContext.setObjectId(login.objectId)
+                        AppContext.setTimeZone(login.timezone)
                         Log.i(TAG, AppContext.getToken())
 
                         val intent = Intent(this@LoginActivity, UserActivity::class.java)

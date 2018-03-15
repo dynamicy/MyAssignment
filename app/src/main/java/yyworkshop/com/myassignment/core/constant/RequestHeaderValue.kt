@@ -11,5 +11,5 @@ enum class RequestHeaderValue(val paramName: String, val value: String) {
 
     X_PARSE_APPLICATION_ID("X-Parse-Application-Id", "vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD"),
     X_PARSE_REST_API_KEY("X-Parse-REST-API-Key", ""),
-    AUTHORIZATION("Authorization", "")
+    X_Parse_Session_Token("X-Parse-Session-Token", "")
 }

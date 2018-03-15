@@ -22,10 +22,14 @@ object AppContext {
 
     private val TAG: String = AppContext::class.java.getSimpleName()
 
-    // Terminal
-    const val TERMINAL: String = "ANDROID"
-
+    // Token
     private var sessionToken: String? = null
+
+    // Object Id
+    private var objectId: String? = null
+
+    // Time Zone
+    private var timeZone: Int? = null
 
     // Server
     var host: String? = null
@@ -63,22 +67,31 @@ object AppContext {
     }
 
     @Synchronized
+    fun setTimeZone(timeZone: Int) {
+        storeDataToPreference(PreferenceKey.TIMEZONE.name, timeZone)
+    }
+
+    fun getTimeZone(): Int? {
+        return getDataFromPreference(PreferenceKey.TIMEZONE.name, String::class.java)?.toInt()
+    }
+
+    @Synchronized
+    fun setObjectId(objectId: String) {
+        storeDataToPreference(PreferenceKey.OBJECTID.name, objectId)
+    }
+
+    fun getObjectId(): String? {
+        return getDataFromPreference(PreferenceKey.OBJECTID.name, String::class.java)
+    }
+
+    @Synchronized
     fun setToken(token: String) {
         storeDataToPreference(PreferenceKey.TOKEN.name, token)
     }
 
     @Synchronized
     fun getToken(): String? {
-
-        val token: String?
-
-        if (sessionToken != null) {
-            token = sessionToken
-        } else {
-            token = getDataFromPreference(PreferenceKey.TOKEN.name, String::class.java)
-        }
-
-        return token
+        return getDataFromPreference(PreferenceKey.TOKEN.name, String::class.java)
     }
 
     private fun <T> getDataFromPreference(key: String, classOfT: Class<T>): T? {

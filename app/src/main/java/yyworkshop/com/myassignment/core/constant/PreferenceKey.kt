@@ -8,5 +8,7 @@ package yyworkshop.com.myassignment.core.constant
  * @version 1.0
  */
 enum class PreferenceKey() {
-    TOKEN
+    TOKEN,
+    OBJECTID,
+    TIMEZONE
 }

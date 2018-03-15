@@ -5,15 +5,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context="yyworkshop.com.myassignment.login.view.LoginActivity">
 
+    <!-- Time Zone Label -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/timeZoneTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/time_zone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Time Zone EditText -->
+    <EditText
+        android:id="@+id/timeZoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeZoneTextView"
+        tools:text="Name"/>
+
+    <Button
+        android:id="@+id/updateButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="38dp"
+        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/signin_shape"
+        android:text="@string/update_time_zone"
+        android:textAllCaps="false"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        />
 
 </android.support.constraint.ConstraintLayout>

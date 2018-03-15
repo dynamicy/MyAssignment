@@ -4,4 +4,6 @@
     <string name="passwords">Passwords:</string>
     <string name="clear">Clear</string>
     <string name="login">Login</string>
+    <string name="update_time_zone">Update Time Zone</string>
+    <string name="time_zone">Time Zone:</string>
 </resources>

@@ -35,6 +35,10 @@ object RestResourceProvider {
         return createService<ISessionResource>(ISessionResource::class.java) as ISessionResource
     }
 
+    fun userResource(): IUserResource {
+        return createService<IUserResource>(IUserResource::class.java) as IUserResource
+    }
+
     private fun <S> createService(serviceClass: Class<S>): Any? {
 
         return if (resourceMap!!.contains(serviceClass.simpleName)) {
