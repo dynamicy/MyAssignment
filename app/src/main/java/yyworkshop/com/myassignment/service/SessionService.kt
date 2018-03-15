@@ -23,8 +23,10 @@ class SessionService {
         val call = sessionResource.login("test2@qq.com", "test1234qq")
         call.enqueue(object : Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
-                val res = response.body()!!.toString()
-                val temp = res
+
+                if (response.body() != null) {
+                    listener.onResponse(response.body())
+                }
             }
 
             override fun onFailure(call: Call<Login>, t: Throwable) {

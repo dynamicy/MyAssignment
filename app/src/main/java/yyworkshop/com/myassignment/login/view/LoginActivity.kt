@@ -19,6 +19,8 @@ import yyworkshop.com.myassignment.service.common.ResponseListener
  */
 class LoginActivity : AppCompatActivity(), ILoginView {
 
+    private val TAG: String = LoginActivity::class.java.getSimpleName()
+
     // Account Label
     var accountTextView: TextView? = null
 
@@ -34,24 +36,31 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     private var sessionService: SessionService? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        Log.i(TAG, "onCreate")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        sessionService = SessionService()
 
         initView()
     }
 
     override fun onStart() {
+
+        Log.i(TAG, "onStart")
+
         super.onStart()
-        sessionService = SessionService()
 
         sessionService!!.doLogin(object : ResponseListener<Login> {
             override fun onResponse(data: Login) {
                 val login = data
-                Log.i("ef3rgr", "")
+                Log.i(TAG, "")
             }
 
             override fun onError() {
-                Log.i("ef3rgr", "")
+                Log.e(TAG, "onError")
             }
         })
     }
@@ -81,6 +90,9 @@ class LoginActivity : AppCompatActivity(), ILoginView {
      *
      */
     private fun initView() {
+
+        Log.i(TAG, "initView")
+
         accountTextView = this.findViewById(R.id.accountTextView)
         accountEditText = this.findViewById(R.id.accountEditText)
         passwordTextView = this.findViewById(R.id.passwordTextView)
