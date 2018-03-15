@@ -12,6 +12,7 @@ versions.kotlin = "1.1.4-2"
 versions.gson = "2.7"
 versions.gms = "11.8.0"
 versions.common_lang3 = "3.4"
+versions.butterknife = "8.8.1"
 def deps = [:]
 
 def support = [:]
@@ -50,7 +51,7 @@ deps.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 deps.retrofit_mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
 deps.retrofit_gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
-
+deps.butterknife = "com.jakewharton:butterknife:$versions.butterknife"
 ext.deps = deps
 
 def build_versions = [:]

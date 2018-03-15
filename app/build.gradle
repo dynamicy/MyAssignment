@@ -23,6 +23,10 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
 
     // Support libraries
@@ -44,7 +48,9 @@ dependencies {
     // okhttp logging interceptor
     compile deps.okhttp_logging_interceptor
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // butterknife
+    compile deps.butterknife
+    annotationProcessor deps.butterknife
 }
-repositories {
-    mavenCentral()
-}
+
