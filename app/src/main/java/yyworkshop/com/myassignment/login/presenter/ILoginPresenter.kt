@@ -7,4 +7,6 @@ package yyworkshop.com.myassignment.login.presenter
  * @author chris
  * @version 1.0
  */
-interface ILoginPresenter
+interface ILoginPresenter {
+
+}

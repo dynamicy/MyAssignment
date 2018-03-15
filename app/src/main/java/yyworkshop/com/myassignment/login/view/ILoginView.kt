@@ -7,4 +7,6 @@ package yyworkshop.com.myassignment.login.view
  * @author chris
  * @version 1.0
  */
-interface ILoginView
+interface ILoginView {
+
+}

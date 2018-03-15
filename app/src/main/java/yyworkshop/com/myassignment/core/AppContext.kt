@@ -7,6 +7,6 @@ package yyworkshop.com.myassignment.core
  * @author chris
  * @version 1.0
  */
-class AppContext {
+object AppContext {
 
 }

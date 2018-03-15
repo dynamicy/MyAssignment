@@ -52,5 +52,8 @@ dependencies {
     // butterknife
     compile deps.butterknife
     annotationProcessor deps.butterknife
+
+    // apache common
+    compile deps.common_lang3
 }
 
