@@ -2,6 +2,8 @@ package yyworkshop.com.myassignment.data
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import yyworkshop.com.myassignment.core.http.RequestInterceptor
 import java.util.concurrent.TimeUnit
 
@@ -14,17 +16,13 @@ import java.util.concurrent.TimeUnit
  */
 object RestResourceFactory {
 
-    private val DEFAULT_READ_TIMEOUT: Long = 30L
+    private const val DEFAULT_READ_TIMEOUT: Long = 30L
 
     // Http client
     private var httpClient: OkHttpClient? = null
 
     // Base URL
     private var baseUrl: String? = null
-
-    fun RestResourceFactory(baseUrl: String) {
-        this.baseUrl = baseUrl
-    }
 
     @Synchronized
     private fun getHttpClient(): OkHttpClient {
@@ -50,5 +48,28 @@ object RestResourceFactory {
                 .readTimeout(DEFAULT_READ_TIMEOUT, TimeUnit.SECONDS)
                 .build()
 
+    }
+
+    fun <S> createService(serviceClass: Class<S>): S {
+
+        val okHttpClient = getHttpClient()
+
+
+//        val retrofit = Retrofit.Builder()
+//                .baseUrl("http://ws.audioscrobbler.com")
+//                .client(client)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+
+        val builder = Retrofit.Builder().baseUrl(baseUrl)
+
+        builder.addConverterFactory(RestConverterFactory).addConverterFactory(GsonConverterFactory.create())
+
+        val retrofit = builder.client(okHttpClient).build()
+        return retrofit.create(serviceClass)
+    }
+
+    fun setBaseUrl(baseUrl: String) {
+        this.baseUrl = baseUrl
     }
 }

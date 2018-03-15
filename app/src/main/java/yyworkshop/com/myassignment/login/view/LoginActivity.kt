@@ -2,9 +2,13 @@ package yyworkshop.com.myassignment.login.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import yyworkshop.com.myassignment.R
+import yyworkshop.com.myassignment.login.model.Login
+import yyworkshop.com.myassignment.service.SessionService
+import yyworkshop.com.myassignment.service.common.ResponseListener
 
 /**
  * Title: yyworkshop.com.myassignment.login.view.LoginActivity<br>
@@ -27,6 +31,8 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     // Passwords Edit Text
     var passwordEditText: EditText? = null
 
+    private var sessionService: SessionService? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -36,7 +42,18 @@ class LoginActivity : AppCompatActivity(), ILoginView {
 
     override fun onStart() {
         super.onStart()
+        sessionService = SessionService()
 
+        sessionService!!.doLogin(object : ResponseListener<Login> {
+            override fun onResponse(data: Login) {
+                val login = data
+                Log.i("ef3rgr", "")
+            }
+
+            override fun onError() {
+                Log.i("ef3rgr", "")
+            }
+        })
     }
 
     override fun onResume() {
