@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import yyworkshop.com.myassignment.R
+import yyworkshop.com.myassignment.core.AppContext
 import yyworkshop.com.myassignment.login.model.Login
 import yyworkshop.com.myassignment.service.SessionService
 import yyworkshop.com.myassignment.service.common.ResponseListener
@@ -56,7 +57,8 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         sessionService!!.doLogin(object : ResponseListener<Login> {
             override fun onResponse(data: Login) {
                 val login = data
-                Log.i(TAG, "")
+                AppContext.setToken(login.sessionToken)
+                Log.i(TAG, AppContext.getToken())
             }
 
             override fun onError() {
