@@ -23,8 +23,8 @@ class RequestInterceptor : Interceptor {
 
         // Build the last request
         val requestBuilder = request.newBuilder()
-                .addHeader(RequestHeaderValue.X_PARSE_APPLICATION_ID.name, RequestHeaderValue.X_PARSE_APPLICATION_ID.value)
-                .addHeader(RequestHeaderValue.X_PARSE_REST_API_KEY.name, RequestHeaderValue.X_PARSE_REST_API_KEY.value)
+                .addHeader(RequestHeaderValue.X_PARSE_APPLICATION_ID.paramName, RequestHeaderValue.X_PARSE_APPLICATION_ID.value)
+                .addHeader(RequestHeaderValue.X_PARSE_REST_API_KEY.paramName, RequestHeaderValue.X_PARSE_REST_API_KEY.value)
 
         // TODO: set getToken
         val token = ""
@@ -34,7 +34,7 @@ class RequestInterceptor : Interceptor {
         }
 
         // Body Parts
-        val requestBody: RequestBody = request.body()!!
+        val requestBody: RequestBody? = request.body()
 
         requestBuilder.method(request.method(), requestBody)
 

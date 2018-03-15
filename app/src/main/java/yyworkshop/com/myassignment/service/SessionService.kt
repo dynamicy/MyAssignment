@@ -20,7 +20,7 @@ class SessionService {
 
         val sessionResource = RestResourceProvider.sessionResource()
 
-        val call = sessionResource.login()
+        val call = sessionResource.login("test2@qq.com", "test1234qq")
         call.enqueue(object : Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
                 val res = response.body()!!.toString()

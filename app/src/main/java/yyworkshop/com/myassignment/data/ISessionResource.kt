@@ -2,6 +2,7 @@ package yyworkshop.com.myassignment.data
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 import yyworkshop.com.myassignment.login.model.Login
 
 /**
@@ -13,9 +14,7 @@ import yyworkshop.com.myassignment.login.model.Login
  */
 interface ISessionResource {
 
-//    https://watch-master-staging.herokuapp.com/api/login
-
     @GET("login")
-    fun login(): Call<Login>
+    fun login(@Query("username") account: String, @Query("password") password: String): Call<Login>
 
 }

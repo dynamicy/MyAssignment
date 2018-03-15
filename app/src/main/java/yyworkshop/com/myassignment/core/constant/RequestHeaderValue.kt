@@ -7,8 +7,9 @@ package yyworkshop.com.myassignment.core.constant
  * @author chris
  * @version 1.0
  */
-enum class RequestHeaderValue(val value: String) {
-    X_PARSE_APPLICATION_ID("vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD"),
-    X_PARSE_REST_API_KEY(""),
-    AUTHORIZATION("")
+enum class RequestHeaderValue(val paramName: String, val value: String) {
+
+    X_PARSE_APPLICATION_ID("X-Parse-Application-Id", "vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD"),
+    X_PARSE_REST_API_KEY("X-Parse-REST-API-Key", ""),
+    AUTHORIZATION("Authorization", "")
 }
