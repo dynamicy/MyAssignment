@@ -1,6 +1,6 @@
 package yyworkshop.com.myassignment.data
 
-import retrofit2.Retrofit
+import yyworkshop.com.myassignment.core.AppContext
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -25,10 +25,9 @@ object RestResourceProvider {
     }
 
     fun resetHost() {
-        // TODO:
-        val host = "https://watch-master-staging.herokuapp.com/api/"
+        val host = AppContext.host
 
-        RestResourceFactory.setBaseUrl(host)
+        RestResourceFactory.setBaseUrl(host!!)
         resourceMap!!.clear()
     }
 
