@@ -14,6 +14,7 @@ import yyworkshop.com.myassignment.ui.base.BaseActivity
 import yyworkshop.com.myassignment.user.model.TimeZone
 import yyworkshop.com.myassignment.user.model.User
 import yyworkshop.com.myassignment.user.presenter.IUserPresenter
+import yyworkshop.com.myassignment.user.presenter.UserPresenter
 
 /**
  * Title: yyworkshop.com.myassignment.user.view.UserActivity<br>
@@ -43,6 +44,8 @@ class UserActivity : BaseActivity(), IUserView, View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         userService = UserService()
+
+        presenter = UserPresenter(this@UserActivity)
 
         initView()
     }
@@ -79,23 +82,14 @@ class UserActivity : BaseActivity(), IUserView, View.OnClickListener {
     }
 
     override fun getTimeZoneText(): TimeZone? {
-        val timeZoneValue : Int = timeZoneEditText?.getText()?.toString()!!.toInt()
+        val timeZoneValue: Int = timeZoneEditText?.getText()?.toString()!!.toInt()
         return TimeZone(timeZoneValue)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.updateButton -> {
-                userService?.updateUser(getTimeZoneText()!!, object : ResponseListener<User> {
-                    override fun onResponse(data: User?) {
-                        val user = data
-                        Log.i(TAG, AppContext.getToken())
-                    }
-
-                    override fun onError() {
-                        Log.e(TAG, "onError")
-                    }
-                })
+                presenter.doUpdateTimeZone()
             }
 
         }

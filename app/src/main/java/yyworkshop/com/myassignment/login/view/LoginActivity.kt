@@ -8,11 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import yyworkshop.com.myassignment.R
-import yyworkshop.com.myassignment.core.AppContext
-import yyworkshop.com.myassignment.login.model.Login
 import yyworkshop.com.myassignment.login.presenter.ILoginPresenter
-import yyworkshop.com.myassignment.service.SessionService
-import yyworkshop.com.myassignment.service.common.ResponseListener
+import yyworkshop.com.myassignment.login.presenter.LoginPresenter
 import yyworkshop.com.myassignment.ui.base.BaseActivity
 import yyworkshop.com.myassignment.user.view.UserActivity
 
@@ -44,8 +41,6 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
     // Login Button
     var loginButton: Button? = null
 
-    private var sessionService: SessionService? = null
-
     override fun getLayoutId(): Int {
         return R.layout.activity_login
     }
@@ -57,7 +52,7 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        sessionService = SessionService()
+        presenter = LoginPresenter(this@LoginActivity)
 
         initView()
 
@@ -68,27 +63,6 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
         Log.i(TAG, "onStart")
 
         super.onStart()
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
 
     }
 
@@ -117,25 +91,15 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
         return passwordEditText?.getText()?.toString()
     }
 
+    override fun gotoUserActivity() {
+        val intent = Intent(this@LoginActivity, UserActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.loginButton -> {
-                sessionService!!.doLogin(getAccountdText(), getPasswordText(), object : ResponseListener<Login> {
-                    override fun onResponse(data: Login) {
-                        val login = data
-                        AppContext.setToken(login.sessionToken)
-                        AppContext.setObjectId(login.objectId)
-                        AppContext.setTimeZone(login.timezone)
-                        Log.i(TAG, AppContext.getToken())
-
-                        val intent = Intent(this@LoginActivity, UserActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                    override fun onError() {
-                        Log.e(TAG, "onError")
-                    }
-                })
+                presenter.doLogin()
             }
 
         }

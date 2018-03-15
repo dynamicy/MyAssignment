@@ -1,8 +1,6 @@
 package yyworkshop.com.myassignment.login.model
 
-import java.util.*
 import com.google.gson.annotations.SerializedName
-import kotlin.collections.HashMap
 
 /**
  * Title: yyworkshop.com.myassignment.login.model.Login<br>

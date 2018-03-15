@@ -15,4 +15,6 @@ interface ILoginView {
 
     fun getPasswordText(): String?
 
+    fun gotoUserActivity()
+
 }

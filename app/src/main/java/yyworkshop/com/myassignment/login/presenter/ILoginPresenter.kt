@@ -8,5 +8,5 @@ package yyworkshop.com.myassignment.login.presenter
  * @version 1.0
  */
 interface ILoginPresenter {
-
+    fun doLogin()
 }

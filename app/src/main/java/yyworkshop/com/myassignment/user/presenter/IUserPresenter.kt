@@ -7,4 +7,6 @@ package yyworkshop.com.myassignment.user.presenter
  * @author chris
  * @version 1.0
  */
-interface IUserPresenter
+interface IUserPresenter {
+    fun doUpdateTimeZone()
+}
