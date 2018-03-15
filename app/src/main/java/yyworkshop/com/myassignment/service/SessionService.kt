@@ -16,15 +16,15 @@ import yyworkshop.com.myassignment.service.common.ResponseListener
  */
 class SessionService {
 
-    fun doLogin(listener: ResponseListener<Login>) {
+    fun doLogin(account: String?, password: String?, listener: ResponseListener<Login>) {
 
         val sessionResource = RestResourceProvider.sessionResource()
 
-        val call = sessionResource.login("test2@qq.com", "test1234qq")
+        val call = sessionResource.login(account, password)
         call.enqueue(object : Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
 
-                if (response.body() != null) {
+                if (response.body() != null && response.code().equals(200)) {
                     listener.onResponse(response.body())
                 }
             }

@@ -15,6 +15,6 @@ import yyworkshop.com.myassignment.login.model.Login
 interface ISessionResource {
 
     @GET("login")
-    fun login(@Query("username") account: String, @Query("password") password: String): Call<Login>
+    fun login(@Query("username") account: String?, @Query("password") password: String?): Call<Login>
 
 }
