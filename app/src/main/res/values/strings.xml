@@ -2,4 +2,6 @@
     <string name="app_name">MyAssignment</string>
     <string name="account">Account:</string>
     <string name="passwords">Passwords:</string>
+    <string name="clear">Clear</string>
+    <string name="login">Login</string>
 </resources>
