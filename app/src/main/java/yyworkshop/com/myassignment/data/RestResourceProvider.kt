@@ -26,7 +26,7 @@ object RestResourceProvider {
 
     fun resetHost() {
         // TODO:
-        val host = "https://watch-master-staging.herokuapp.com/api/login/"
+        val host = "https://watch-master-staging.herokuapp.com/api/"
 
         RestResourceFactory.setBaseUrl(host)
         resourceMap!!.clear()
