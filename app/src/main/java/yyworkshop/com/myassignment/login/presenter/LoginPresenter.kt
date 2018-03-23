@@ -26,20 +26,25 @@ class LoginPresenter(var loginView: ILoginView) : ILoginPresenter {
 
     override fun doLogin() {
 
-        sessionService!!.doLogin(loginView.getAccountdText(), loginView.getPasswordText(), object : ResponseListener<Login> {
-            override fun onResponse(data: Login) {
-                val login = data
-                AppContext.setToken(login.sessionToken)
-                AppContext.setObjectId(login.objectId)
-                AppContext.setTimeZone(login.timezone)
-                Log.i(TAG, AppContext.getToken())
+        // Check if it's not in foreground
+        val isForeground: Boolean? = loginView.isForeground()
 
-                loginView.gotoUserActivity()
-            }
+        if(isForeground!!) {
+            sessionService!!.doLogin(loginView.getAccountdText(), loginView.getPasswordText(), object : ResponseListener<Login> {
+                override fun onResponse(data: Login) {
+                    val login = data
+                    AppContext.setToken(login.sessionToken)
+                    AppContext.setObjectId(login.objectId)
+                    AppContext.setTimeZone(login.timezone)
+                    Log.i(TAG, AppContext.getToken())
 
-            override fun onError() {
-                Log.e(TAG, "onError")
-            }
-        })
+                    loginView.gotoUserActivity()
+                }
+
+                override fun onError() {
+                    Log.e(TAG, "onError")
+                }
+            })
+        }
     }
 }

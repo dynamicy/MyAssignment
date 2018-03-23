@@ -41,6 +41,9 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
     // Login Button
     var loginButton: Button? = null
 
+    // Is in foreground
+    var isForeground: Boolean = false
+
     override fun getLayoutId(): Int {
         return R.layout.activity_login
     }
@@ -56,6 +59,18 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
 
         initView()
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        isForeground = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        isForeground = true
     }
 
     override fun onStart() {
@@ -103,5 +118,9 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
             }
 
         }
+    }
+
+    override fun isForeground(): Boolean? {
+        return this.isForeground
     }
 }

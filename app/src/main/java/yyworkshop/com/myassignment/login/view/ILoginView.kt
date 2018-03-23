@@ -17,4 +17,6 @@ interface ILoginView {
 
     fun gotoUserActivity()
 
+    // Check the status of this view
+    fun isForeground(): Boolean?
 }
