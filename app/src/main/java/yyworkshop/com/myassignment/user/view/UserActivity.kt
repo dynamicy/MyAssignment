@@ -3,10 +3,9 @@ package yyworkshop.com.myassignment.user.view
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_user.*
 import yyworkshop.com.myassignment.R
+import yyworkshop.com.myassignment.core.AppContext
 import yyworkshop.com.myassignment.service.UserService
 import yyworkshop.com.myassignment.ui.base.BaseActivity
 import yyworkshop.com.myassignment.user.model.TimeZone
@@ -25,15 +24,6 @@ class UserActivity : BaseActivity(), IUserView, View.OnClickListener {
     private val TAG: String = UserActivity::class.java.getSimpleName()
 
     internal lateinit var presenter: IUserPresenter
-
-    // Time Zone Label
-    var timeZoneTextView: TextView? = null
-
-    // Time Zone Edit Text
-    var timeZoneEditText: EditText? = null
-
-    // Login Button
-    var updateButton: Button? = null
 
     private var userService: UserService? = null
 
@@ -57,12 +47,9 @@ class UserActivity : BaseActivity(), IUserView, View.OnClickListener {
 
         setToolbarVisibility(false)
 
-        timeZoneTextView = this.findViewById(R.id.timeZoneTextView)
-        timeZoneEditText = this.findViewById(R.id.timeZoneEditText)
+        timeZoneEditText.setText(AppContext.getTimeZone()?.toString())
 
-        updateButton = this.findViewById(R.id.updateButton)
-        updateButton?.setOnClickListener(this)
-
+        updateButton.setOnClickListener(this)
     }
 
     override fun getTimeZoneText(): TimeZone? {

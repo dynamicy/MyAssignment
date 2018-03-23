@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_login.*
 import yyworkshop.com.myassignment.R
 import yyworkshop.com.myassignment.login.presenter.ILoginPresenter
 import yyworkshop.com.myassignment.login.presenter.LoginPresenter
@@ -25,21 +23,6 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
     private val TAG: String = LoginActivity::class.java.getSimpleName()
 
     internal lateinit var presenter: ILoginPresenter
-
-    // Account Label
-    var accountTextView: TextView? = null
-
-    // Account Edit Text
-    var accountEditText: EditText? = null
-
-    // Passwords Label
-    var passwordTextView: TextView? = null
-
-    // Passwords Edit Text
-    var passwordEditText: EditText? = null
-
-    // Login Button
-    var loginButton: Button? = null
 
     // Is in foreground
     var isForeground: Boolean = false
@@ -82,7 +65,7 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
     }
 
     /**
-     *
+     * Initialize view
      */
     private fun initView() {
 
@@ -90,12 +73,7 @@ class LoginActivity : BaseActivity(), ILoginView, View.OnClickListener {
 
         setToolbarVisibility(false)
 
-        accountTextView = this.findViewById(R.id.accountTextView)
-        accountEditText = this.findViewById(R.id.accountEditText)
-        passwordTextView = this.findViewById(R.id.passwordTextView)
-        passwordEditText = this.findViewById(R.id.passwordEditText)
-        loginButton = this.findViewById(R.id.loginButton)
-        loginButton?.setOnClickListener(this)
+        loginButton.setOnClickListener(this)
     }
 
     override fun getAccountdText(): String? {
