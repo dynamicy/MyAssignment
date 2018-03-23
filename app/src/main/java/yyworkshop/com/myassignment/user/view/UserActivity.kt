@@ -7,12 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import yyworkshop.com.myassignment.R
-import yyworkshop.com.myassignment.core.AppContext
 import yyworkshop.com.myassignment.service.UserService
-import yyworkshop.com.myassignment.service.common.ResponseListener
 import yyworkshop.com.myassignment.ui.base.BaseActivity
 import yyworkshop.com.myassignment.user.model.TimeZone
-import yyworkshop.com.myassignment.user.model.User
 import yyworkshop.com.myassignment.user.presenter.IUserPresenter
 import yyworkshop.com.myassignment.user.presenter.UserPresenter
 
@@ -63,22 +60,9 @@ class UserActivity : BaseActivity(), IUserView, View.OnClickListener {
         timeZoneTextView = this.findViewById(R.id.timeZoneTextView)
         timeZoneEditText = this.findViewById(R.id.timeZoneEditText)
 
-        // Last time zone
-        val temp = timeZoneEditText as TextView
-        temp.text = AppContext.getTimeZone()?.toString()!!
-
         updateButton = this.findViewById(R.id.updateButton)
         updateButton?.setOnClickListener(this)
 
-        userService?.updateUser(TimeZone(6), object : ResponseListener<User> {
-            override fun onResponse(data: User) {
-                Log.e(TAG, "onResponse")
-            }
-
-            override fun onError() {
-                Log.e(TAG, "onError")
-            }
-        })
     }
 
     override fun getTimeZoneText(): TimeZone? {

@@ -23,8 +23,6 @@ class UserService {
 
         val userResource = RestResourceProvider.userResource()
 
-        var objId: String? = AppContext.getObjectId()
-
         val call = userResource.updateUser(AppContext.getObjectId(), timeZone)
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
